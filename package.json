@@ -4,7 +4,8 @@
   "description": "Github action to create Jira tickets for vulnerabilities detected during Snyk ans Zap security scans",
   "main": "src/index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "build": "ncc build src/index.ts --source-map"
   },
   "repository": {
     "type": "git",
