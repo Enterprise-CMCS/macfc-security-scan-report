@@ -132,7 +132,6 @@ try {
           vulnerabilities = parseNonJsonData(inputData);
         }
       }
-      
       return vulnerabilities;
     }
 
@@ -147,12 +146,10 @@ try {
         title: defaultTitle,
         description: `Non-JSON output from Snyk:\n\n${inputData}`
       });
-      
+
       return vulnerabilities;
     }
 
-    console.log(vulnerabilities);
-    
     async function createJiraTicket(vulnerability) {
       // JQL query with relative date math, status conditions.
       const title = vulnerability.title.replaceAll("\"", "\\\"");
@@ -202,6 +199,8 @@ try {
 
       const vulnerabilities = parseSnykOutput(jsonData);
       console.log(`Parsed vulnerabilities: ${vulnerabilities.length}`);
+
+      console.log(vulnerabilities);
 
       const uniqueVulnerabilities = vulnerabilities
         .filter(v => v && v.title) // Filter out undefined or objects without a title
