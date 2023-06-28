@@ -20,6 +20,7 @@
   "homepage": "https://github.com/Enterprise-CMCS/macfc-security-scan-report#readme",
   "dependencies": {
     "@actions/core": "^1.10.0",
-    "@actions/github": "^5.1.1"
+    "@actions/github": "^5.1.1",
+    "@vercel/ncc": "^0.28.2"
   }
 }

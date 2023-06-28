@@ -19,7 +19,9 @@ jobs:
         run: npm ci
 
       - name: Build the dist/ directory
-        run: npm run build
+        run: |
+          npm install -g @vercel/ncc
+          npm run build
 
       - name: Check for diff
         run: |
