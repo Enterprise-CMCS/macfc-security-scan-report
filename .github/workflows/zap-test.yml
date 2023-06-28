@@ -1,8 +1,9 @@
-name: Jira Ticket Creation Workflow
+name: Zap Jira Ticket Creation Workflow
 on:
   push:
     branches:
       - main
+      - demo
   pull_request:
     branches: [ main ]
 
