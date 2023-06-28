@@ -202,10 +202,9 @@ try {
       const vulnerabilities = parseSnykOutput(jsonData);
       console.log(`Parsed vulnerabilities: ${vulnerabilities.length}`);
 
-      const uniqueVulnerabilities = Array.from(new Set(vulnerabilities.map(v => v.title)))
-        .map(title => {
-          return vulnerabilities.find(v => v.title === title);
-        });
+      const uniqueVulnerabilities = vulnerabilities
+        .filter(v => v && v.title) // Filter out undefined or objects without a title
+        .map(v => v.title);
 
       for (const vulnerability of uniqueVulnerabilities) {
         try {
