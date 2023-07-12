@@ -1,0 +1,27 @@
+name: Check that module was built
+
+on:
+  push:
+    branches:
+      - main
+  pull_request:
+  workflow_dispatch:
+
+jobs:
+  check-dist:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v3
+
+      - name: Build the dist/ directory
+        run: |
+          npm install -g @vercel/ncc
+          npm run build
+
+      - name: Check for diff
+        run: |
+          if git diff --no-patch --exit-code dist; then
+            echo "Detected uncommitted changes after building. Please run 'npm run build' and commit the changes."
+            exit 1
+          fi
